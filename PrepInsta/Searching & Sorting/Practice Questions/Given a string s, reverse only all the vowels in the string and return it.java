@@ -17,3 +17,37 @@
           
           s consist of printable ASCII characters. */
 
+// SOLUTION
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        char[] ch = s.toCharArray();
+        int l = 0;
+        int r = ch.length-1;
+        while(l<r){
+            if(isVowel(ch[l]) && isVowel(ch[r])){
+                char temp = ch[l];
+                ch[l] = ch[r];
+                ch[r] = temp;
+                l++;
+                r--;
+            }
+            else if(isVowel(ch[l])){
+                r--;
+            }
+            else if(isVowel(ch[r])){
+                l++;
+            }else{
+                l++;
+                r--;
+            }
+        }
+        System.out.println(String.valueOf(ch));
+    }
+    public static boolean isVowel(char ch){
+        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+    }
+
+}
