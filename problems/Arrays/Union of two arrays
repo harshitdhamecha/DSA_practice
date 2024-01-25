@@ -1,0 +1,64 @@
+/*
+
+Given two arrays a[] and b[] of size n and m respectively. The task is to find the number of elements in the union between these two arrays.
+
+Union of the two arrays can be defined as the set containing distinct elements from both the arrays. If there are repetitions, then only one occurrence of element should be printed in the union.
+
+Note : Elements are not necessarily distinct.
+              
+              Example 1:
+              
+              Input:
+              5 3
+              1 2 3 4 5
+              1 2 3
+              Output: 
+              5
+              Explanation: 
+              1, 2, 3, 4 and 5 are the
+              elements which comes in the union set
+              of both arrays. So count is 5.
+
+
+*/
+
+Here for the solution we use HashSet because it efficiently removes all the duplicate values and if we want to check for a value we can use .contains method which uses a time complexity of O(1).
+Hashing is easy, collisions can occur when there is a same output for two seperate values of input and this can be solved through chaining (use linkedlists to store multiple values at same location) or neighbouring space checks i.e. Open Addressing.
+
+for map it is 
+HashMap<Key, Value> hm = new HashMap<>();
+hm.put(key, value);
+hm.get(key);   fetches the value
+hm.containsKey();
+hm.remove(key);
+
+for set it is
+HashSet<Integer> hs = new HashSet<>();
+hs.add();
+hs.contains();
+hs.remove;
+
+
+
+Solution:
+
+
+
+                  class Solution{
+                      public static int doUnion(int a[], int n, int b[], int m) 
+                      {
+                       
+                       
+                          //Your code here
+                          HashSet<Integer> hs = new HashSet<Integer>();
+                          for(int i = 0; i<n; i++){
+                              hs.add(a[i]);
+                          }
+                          for(int i = 0; i<m; i++){
+                              hs.add(b[i]);
+                          }
+                          
+                          return hs.size();
+                          
+                      }
+                  }
