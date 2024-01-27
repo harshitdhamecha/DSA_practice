@@ -1,0 +1,63 @@
+/*
+
+Given an unsorted array Arr of N positive and negative numbers. Your task is to create an array of alternate positive and negative numbers without changing the relative order of positive and negative numbers.
+Note: Array should start with a positive number and 0 (zero) should be considered a positive element.
+ 
+              
+              Example 1:
+              
+              Input: 
+              N = 9
+              Arr[] = {9, 4, -2, -1, 5, 0, -5, -3, 2}
+              Output:
+              9 -2 4 -1 5 -5 0 -3 2
+              Explanation : Positive elements : 9,4,5,0,2
+              Negative elements : -2,-1,-5,-3
+              As we need to maintain the relative order of
+              postive elements and negative elements we will pick
+              each element from the positive and negative and will
+              store them. If any of the positive and negative numbers
+              are completed. we will continue with the remaining signed
+              elements.The output is 9,-2,4,-1,5,-5,0,-3,2.
+
+*/
+
+
+
+class Solution {
+    void rearrange(int arr[], int n) {
+        // code here
+        
+        int[] positive = new int[n];
+        int[] negative = new int[n];
+        int pos = 0, neg = 0;
+        
+        for(int i = 0; i<n; i++){
+            if(arr[i] >= 0){
+                positive[pos++] = arr[i];
+            }else{
+                negative[neg++] = arr[i];
+            }
+        }
+        
+        int i = 0, j = 0, k = 0;
+        
+        while(i<pos && j < neg){
+            
+            arr[k++] = positive[i++];
+            arr[k++] = negative[j++];
+            
+            
+        }
+        while (i < pos) {
+            arr[k++] = positive[i++];
+        }
+        
+        // Copy remaining negative elements if any
+        while (j < neg) {
+            arr[k++] = negative[j++];
+        }
+        
+    }
+    
+}
